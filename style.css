@@ -570,8 +570,14 @@ footer { background: #081a2c; color: #e4e7ea; }
 .application-intro { margin: -12px 0 26px; max-width: 650px; }
 .application-form { display: grid; gap: 24px; }
 .application-form fieldset { min-width: 0; padding: 22px; border: 1px solid var(--soft-border); border-radius: 6px; background: var(--white); }
-.application-form legend { padding: 0 8px; color: var(--navy); font-size: 1.1rem; font-weight: 700; }
+.application-form legend { float: left; width: 100%; margin: 0 0 14px; padding: 0; color: var(--navy); font-size: 1.1rem; font-weight: 700; line-height: 1.35; }
+.application-form legend + * { clear: both; }
 .application-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.application-selection-note { margin: 0 0 14px; color: #555e65; font-size: .9rem; }
+.application-check-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 18px; }
+.application-check-option { display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+.application-check-option input { flex: 0 0 18px; width: 18px; height: 18px; min-height: 18px; margin: 1px 0 0; accent-color: var(--navy); }
+.application-signature-fields { margin-top: 18px; }
 .form-field { display: grid; align-content: start; gap: 7px; }
 .form-field-wide { grid-column: 1 / -1; }
 .form-field label { font-size: .92rem; font-weight: 650; }
@@ -659,11 +665,13 @@ footer { background: #081a2c; color: #e4e7ea; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
 @media (max-width: 900px) {
+  .application-check-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .resource-subjects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
   .application-form fieldset { padding: 16px; }
   .application-fields { grid-template-columns: minmax(0, 1fr); }
+  .application-check-grid { grid-template-columns: minmax(0, 1fr); }
   .form-field-wide { grid-column: auto; }
   .application-submit { width: 100%; justify-content: center; }
   .resource-panel { padding: 16px; }

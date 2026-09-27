@@ -30,7 +30,7 @@
       <div class="container application-container">
         <p class="eyebrow">Online application</p>
         <h2 class="section-title" id="application-title">Apply to ParSam</h2>
-        <p class="application-intro">Complete the fields below. Your application will be prepared as a PDF and emailed to the admissions team.</p>
+        <p class="application-intro">Complete the fields below. Your application and any attached supporting documents will be emailed to the admissions team.</p>
         <form class="application-form" id="studentApplication" action="https://formsubmit.co/parsamlearningcentre@gmail.com" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="_subject" value="New ParSam student application">
           <input type="hidden" name="_template" value="table">
@@ -50,7 +50,14 @@
                 <input id="dateOfBirth" name="Date of birth" type="date" required>
               </div>
               <div class="form-field">
-                <label for="applyingFor">Applying for <span aria-hidden="true">*</span></label>
+                <label for="studentGender">Gender <span aria-hidden="true">*</span></label>
+                <select id="studentGender" name="Gender" required>
+                  <option value="">Select gender</option>
+                  <option>Male</option><option>Female</option><option>Other</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="applyingFor">Form / class applying for <span aria-hidden="true">*</span></label>
                 <select id="applyingFor" name="Applying for" required>
                   <option value="">Select a form</option>
                   <option>Form 1</option><option>Form 2</option><option>Form 3</option>
@@ -65,10 +72,76 @@
                 <label for="lastGrade">Last form completed</label>
                 <input id="lastGrade" name="Last form completed" type="text" maxlength="40">
               </div>
+              <div class="form-field">
+                <label for="studentPhone">Student phone number</label>
+                <input id="studentPhone" name="Student phone number" type="tel" maxlength="30" autocomplete="tel">
+              </div>
+              <div class="form-field">
+                <label for="studentEmail">Student email address</label>
+                <input id="studentEmail" name="Student email address" type="email" maxlength="254" autocomplete="email">
+              </div>
               <div class="form-field form-field-wide">
                 <label for="homeAddress">Home address <span aria-hidden="true">*</span></label>
                 <textarea id="homeAddress" name="Home address" rows="2" required maxlength="300" autocomplete="street-address"></textarea>
               </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>O-Level subjects (choose up to 9)</legend>
+            <p class="application-selection-note" id="oLevelCount" aria-live="polite">0 of 9 selected.</p>
+            <div class="application-check-grid">
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="English Language" data-subject-level="o-level"> English Language</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Mathematics" data-subject-level="o-level"> Mathematics</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Statistics" data-subject-level="o-level"> Statistics</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Biology" data-subject-level="o-level"> Biology</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Chemistry" data-subject-level="o-level"> Chemistry</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Physics" data-subject-level="o-level"> Physics</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Geography" data-subject-level="o-level"> Geography</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Commerce" data-subject-level="o-level"> Commerce</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Principles of Accounting" data-subject-level="o-level"> Principles of Accounting</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Business Enterprise Skills" data-subject-level="o-level"> Business Enterprise Skills</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Family and Religious Studies" data-subject-level="o-level"> Family and Religious Studies</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Shona Language" data-subject-level="o-level"> Shona Language</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Computer Science" data-subject-level="o-level"> Computer Science</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Combined Science" data-subject-level="o-level"> Combined Science</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="History" data-subject-level="o-level"> History</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Economics" data-subject-level="o-level"> Economics</label>
+              <label class="application-check-option"><input type="checkbox" name="O-Level subjects" value="Heritage" data-subject-level="o-level"> Heritage</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>A-Level subjects (choose 3 when applying for Form 5 or Form 6)</legend>
+            <p class="application-selection-note" id="aLevelCount" aria-live="polite">0 of 3 selected. Leave blank if not applicable.</p>
+            <div class="application-check-grid">
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="English Literature" data-subject-level="a-level"> English Literature</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="History or Heritage" data-subject-level="a-level"> History or Heritage</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Statistics" data-subject-level="a-level"> Statistics</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Geography" data-subject-level="a-level"> Geography</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Studies in Shona Literature" data-subject-level="a-level"> Studies in Shona Literature</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Biology" data-subject-level="a-level"> Biology</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Chemistry" data-subject-level="a-level"> Chemistry</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Accounting" data-subject-level="a-level"> Accounting</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Physics" data-subject-level="a-level"> Physics</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Computer Science" data-subject-level="a-level"> Computer Science</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Economic History" data-subject-level="a-level"> Economic History</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Pure Mathematics" data-subject-level="a-level"> Pure Mathematics</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Business Studies" data-subject-level="a-level"> Business Studies</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Economics" data-subject-level="a-level"> Economics</label>
+              <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="Family and Religious Studies" data-subject-level="a-level"> Family and Religious Studies</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Extra-curricular activities</legend>
+            <div class="application-check-grid">
+              <label class="application-check-option"><input type="checkbox" name="Activities" value="Volleyball"> Volleyball</label>
+              <label class="application-check-option"><input type="checkbox" name="Activities" value="Netball"> Netball</label>
+              <label class="application-check-option"><input type="checkbox" name="Activities" value="Basketball"> Basketball</label>
+              <label class="application-check-option"><input type="checkbox" name="Activities" value="Public Speaking"> Public Speaking</label>
+              <label class="application-check-option"><input type="checkbox" name="Activities" value="Music and Art Club"> Music and Art Club</label>
+              <label class="application-check-option"><input type="checkbox" name="Activities" value="Soccer"> Soccer</label>
             </div>
           </fieldset>
 
@@ -98,11 +171,44 @@
             </div>
           </fieldset>
 
-          <label class="application-consent" for="applicationConsent">
-            <input id="applicationConsent" name="Parent or guardian declaration" type="checkbox" value="Confirmed" required>
-            <span>I confirm that I am the student and/or student's parent or guardian and that the information provided is accurate. <span aria-hidden="true">*</span></span>
-          </label>
-          <p class="application-privacy">Your details and PDF are sent to ParSam Learning Centre through FormSubmit, a third-party email service. FormSubmit retains text submissions for up to 30 days. Do not include sensitive documents in the additional information field.</p>
+          <fieldset>
+            <legend>Supporting documents</legend>
+            <p class="application-selection-note">Attach a previous school report, a birth certificate or national ID, and a transfer letter if available. PDF, JPG and PNG files are accepted; the combined upload size must not exceed 10 MB.</p>
+            <div class="application-fields">
+              <div class="form-field">
+                <label for="previousReport">Previous school report</label>
+                <input id="previousReport" name="attachment" type="file" accept="application/pdf,image/jpeg,image/png">
+              </div>
+              <div class="form-field">
+                <label for="birthCertificateOrId">Birth certificate or national ID</label>
+                <input id="birthCertificateOrId" name="attachment" type="file" accept="application/pdf,image/jpeg,image/png">
+              </div>
+              <div class="form-field form-field-wide">
+                <label for="transferLetter">Transfer letter (if applicable)</label>
+                <input id="transferLetter" name="attachment" type="file" accept="application/pdf,image/jpeg,image/png">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Declaration and signature</legend>
+            <label class="application-consent" for="applicationConsent">
+              <input id="applicationConsent" name="Applicant declaration" type="checkbox" value="Confirmed" required>
+              <span>I declare that the information given is true and correct. <span aria-hidden="true">*</span></span>
+            </label>
+            <div class="application-fields application-signature-fields">
+              <div class="form-field">
+                <label for="applicantSignature">Student or parent/guardian signature (type full name) <span aria-hidden="true">*</span></label>
+                <input id="applicantSignature" name="Signature" type="text" required maxlength="120">
+              </div>
+              <div class="form-field">
+                <label for="signatureDate">Date signed <span aria-hidden="true">*</span></label>
+                <input id="signatureDate" name="Date signed" type="date" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <p class="application-privacy">Your application and uploaded files are sent to ParSam Learning Centre through FormSubmit, a third-party email service. FormSubmit retains form submissions for up to 30 days; uploaded files are not available through its submissions archive. Only attach documents needed for admission.</p>
           <button class="btn application-submit" id="applicationSubmit" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Submit application</button>
           <p class="application-status" id="applicationStatus" role="status" aria-live="polite"></p>
         </form>

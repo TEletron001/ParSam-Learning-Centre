@@ -9,6 +9,9 @@ if (studentApplication) {
   const applicationReturnUrl = document.getElementById('applicationReturnUrl');
   const dateOfBirth = document.getElementById('dateOfBirth');
   const signatureDate = document.getElementById('signatureDate');
+  const applyingFor = document.getElementById('applyingFor');
+  const aLevelSection = document.getElementById('aLevelSection');
+  const aLevelSubjects = [...studentApplication.querySelectorAll('input[data-subject-level="a-level"]')];
   const attachmentInputs = [...studentApplication.querySelectorAll('input[type="file"][name="attachment"]')];
   const MAX_ATTACHMENT_BYTES = 10 * 1024 * 1024;
   const currentDate = new Date();
@@ -24,6 +27,19 @@ if (studentApplication) {
     document.getElementById(countElementId).textContent = `${count} of ${maximum} selected.`;
     return count;
   };
+
+  const updateAlevelVisibility = () => {
+    const isApplyingForALevel = applyingFor.value === 'Form 5' || applyingFor.value === 'Form 6';
+    aLevelSection.hidden = !isApplyingForALevel;
+    aLevelSubjects.forEach((subject) => {
+      subject.disabled = !isApplyingForALevel;
+      if (!isApplyingForALevel) subject.checked = false;
+    });
+    updateSubjectCount('a-level', 'aLevelCount', 3);
+  };
+
+  updateAlevelVisibility();
+  applyingFor.addEventListener('change', updateAlevelVisibility);
 
   studentApplication.querySelectorAll('input[data-subject-level]').forEach((subject) => {
     subject.addEventListener('change', () => {
@@ -49,15 +65,12 @@ if (studentApplication) {
   studentApplication.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const applyingFor = document.getElementById('applyingFor').value;
+    const applyingForLevel = applyingFor.value === 'Form 5' || applyingFor.value === 'Form 6';
     const aLevelCount = updateSubjectCount('a-level', 'aLevelCount', 3);
-    const isApplyingForALevel = applyingFor === 'Form 5' || applyingFor === 'Form 6';
 
-    if ((isApplyingForALevel && aLevelCount !== 3) || (aLevelCount > 0 && aLevelCount !== 3)) {
-      applicationStatus.textContent = isApplyingForALevel
-        ? 'Select exactly three A-Level subjects for Form 5 or Form 6.'
-        : 'Select all three A-Level subjects, or clear the A-Level choices if they are not applicable.';
-      document.querySelector('[data-subject-level="a-level"]').focus();
+    if (applyingForLevel && aLevelCount !== 3) {
+      applicationStatus.textContent = 'Select exactly three A-Level subjects for Form 5 or Form 6.';
+      aLevelSubjects[0].focus();
       return;
     }
 

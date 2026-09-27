@@ -63,6 +63,7 @@
                   <option>Form 1</option><option>Form 2</option><option>Form 3</option>
                   <option>Form 4</option><option>Form 5</option><option>Form 6</option>
                 </select>
+                <small class="application-field-hint">A-Level subject choices are for Form 5 and Form 6 applicants.</small>
               </div>
               <div class="form-field">
                 <label for="previousSchool">Previous school</label>
@@ -111,9 +112,9 @@
             </div>
           </fieldset>
 
-          <fieldset>
+          <fieldset id="aLevelSection" hidden>
             <legend>A-Level subjects (choose 3 when applying for Form 5 or Form 6)</legend>
-            <p class="application-selection-note" id="aLevelCount" aria-live="polite">0 of 3 selected. Leave blank if not applicable.</p>
+            <p class="application-selection-note" id="aLevelCount" aria-live="polite">0 of 3 selected.</p>
             <div class="application-check-grid">
               <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="English Literature" data-subject-level="a-level"> English Literature</label>
               <label class="application-check-option"><input type="checkbox" name="A-Level subjects" value="History or Heritage" data-subject-level="a-level"> History or Heritage</label>

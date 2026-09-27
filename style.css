@@ -579,6 +579,7 @@ footer { background: #081a2c; color: #e4e7ea; }
 .application-check-option input { flex: 0 0 18px; width: 18px; height: 18px; min-height: 18px; margin: 1px 0 0; accent-color: var(--navy); }
 .application-signature-fields { margin-top: 18px; }
 .form-field { display: grid; align-content: start; gap: 7px; }
+.application-field-hint { color: #555e65; font-size: .84rem; line-height: 1.4; }
 .form-field-wide { grid-column: 1 / -1; }
 .form-field label { font-size: .92rem; font-weight: 650; }
 .form-field label span, .application-consent span span { color: #a32828; }
